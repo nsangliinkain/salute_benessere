@@ -52,6 +52,10 @@ function setPageTitle() {
             pageTitle.textContent = "Contatti";
             pageParagraph.textContent = "Hai domande o suggerimenti? Contattaci!";
             break;
+        case "signup":
+            pageTitle.textContent = "Registrati";
+            pageParagraph.textContent = "Unisciti alla nostra community e inizia il tuo viaggio verso il benessere.";
+            break;
         case "conferma":
             break;
         default:

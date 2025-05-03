@@ -1,188 +1,258 @@
-/* Impostazioni di base */
+/* ======================================
+   VARIABILI CSS
+====================================== */
+:root {
+  /* Colori */
+  --color-primary: #00796b;
+  --color-primary-dark: #004d40;
+  --color-primary-light: #b2dfdb;
+  --color-bg-light: #f4f9f4;
+  --color-bg-accent: #e0f2f1;
+  --color-text: #333;
+  --color-text-secondary: #555;
+  --color-white: #ffffff;
+  
+  /* Font e tipografia */
+  --font-family: 'Segoe UI', sans-serif;
+  --font-size-base: 16px;
+  --line-height: 1.6;
+  
+  /* Spaziature */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-xxl: 40px;
+  
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 15px;
+  --radius-lg: 25px;
+  
+  /* Box shadow */
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+  /*signup form*/
+  --form-bg-color: #ffffff;
+  --header-bg-color: #b2e0df;
+  --primary-color: #008080;
+  --text-color: #333333;
+  --border-color: #dddddd;
+  --hover-color: #f0f8ff;
+}
+
+/* ======================================
+   RESET E IMPOSTAZIONI DI BASE
+====================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f4f9f4;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  /* Header */
-  header {
-    text-align: center;
-    padding: 5px;
-    background-color: #b2dfdb;
-    color: #004d40;
-  }
-  
-  header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-  }
-  
-  header p {
-    font-size: 1.2em;
-  }
-  
-  /* Sezione citazione */
-  .intro {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .intro blockquote {
-    font-style: italic;
-    color: #555;
-    margin: 20px auto;
-    max-width: 600px;
-  }
-  
-  .intro button {
-    background-color: #00796b;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-  }
-  
-  .intro button:hover {
-    background-color: #004d40;
-    transform: scale(1.03);
-  }
-  
-  /* Sezione features / card */
-  .features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 40px 20px;
-  }
-  
-  .card {
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 20px;
-    width: 280px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    text-align: center;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card h2 {
-    margin-bottom: 10px;
-    color: #00796b;
-  }
-  
-  .card p {
-    color: #555;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #b2dfdb;
-    text-align: center;
-    padding: 15px;
-    color: #004d40;
-    font-size: 0.9em;
-  }
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background: var(--color-bg-light);
+  color: var(--color-text);
+  line-height: var(--line-height);
+  margin: 0;
+}
 
-  /* Sezione Consigli */
-.consigli {
-    padding: 40px 20px;
-    background-color: #e0f2f1;
-    text-align: center;
-  }
-  
-  .consigli h2 {
-    font-size: 2em;
-    color: #00695c;
-  }
-  
-  .descrizione {
-    margin-bottom: 30px;
-    color: #444;
-    font-size: 1.1em;
-  }
-  
-  .consigli-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .consiglio {
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 20px;
-    width: 260px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    transition: transform 0.2s ease;
-  }
-  
-.consiglio:hover {
-    transform: translateY(-5px);
+h1, h2, h3, h4 {
+  margin: 0 0 var(--spacing-md) 0;
+  line-height: 1.2;
+  color: var(--color-primary);
 }
-  
-.consiglio h3 {
-    color: #00796b;
-    margin-bottom: 10px;
-    font-size: 1.2em;
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
 }
-  
-.consiglio p {
-    color: #555;
-    font-size: 0.95em;
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-family);
 }
-  
-.recent-articles {
-  padding: 40px 20px;
+
+/* ======================================
+   HEADER
+====================================== */
+header {
   text-align: center;
+  padding: var(--spacing-md);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
 }
 
-
-.article p {
-  padding: 0 15px;
-  color: #555;
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: var(--spacing-sm);
 }
 
-.read-more {
-  display: inline-block;
-  margin: 15px;
-  color: #00796b;
-  text-decoration: none;
-  font-weight: bold;
+header p {
+  font-size: 1.2em;
 }
 
-.consigli-intro {
-    padding: 30px 20px;
-    background-color: #e0f2f1;
-    text-align: center;
+/* ======================================
+   SEZIONE INTRO
+====================================== */
+.intro {
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.intro blockquote {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin: var(--spacing-xl) auto;
+  max-width: 600px;
 }
 
 .intro-text {
-    max-width: 800px;
-    margin: 0 auto;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .intro-text h2 {
-    color: #00796b;
-    margin-bottom: 20px;
-    margin-top: 20px;
+  margin-bottom: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
 }
 
 .intro-text p {
-    line-height: 1.6;
-    margin-bottom: 15px;
+  margin-bottom: var(--spacing-md);
+}
+
+.intro-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-lg);
+}
+
+.intro-text th, 
+.intro-text td {
+  border: 1px solid var(--color-text);
+  padding: var(--spacing-sm);
+  text-align: center;
+}
+
+/* ======================================
+   PULSANTI
+====================================== */
+.btn {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  font-size: 1em;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: scale(1.03);
+}
+
+.intro button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  font-size: 1em;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.intro button:hover {
+  background-color: var(--color-primary-dark);
+  transform: scale(1.03);
+}
+
+/* ======================================
+   CARDS E FEATURES
+====================================== */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xxl) var(--spacing-lg);
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  width: 280px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.card p {
+  color: var(--color-text-secondary);
+}
+
+/* ======================================
+   SEZIONE CONSIGLI
+====================================== */
+.consigli, 
+.consigli-intro {
+  padding: var(--spacing-xxl) var(--spacing-lg);
+  background-color: var(--color-bg-accent);
+  text-align: center;
+}
+
+.consigli h2 {
+  font-size: 2em;
+}
+
+.descrizione {
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text-secondary);
+  font-size: 1.1em;
+}
+
+.consigli-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
+.consiglio {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  width: 260px;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.consiglio:hover {
+  transform: translateY(-5px);
+}
+
+.consiglio h3 {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.2em;
+}
+
+.consiglio p {
+  color: var(--color-text-secondary);
+  font-size: 0.95em;
 }
 
 .consiglio .details {
@@ -193,108 +263,134 @@ body {
   display: block;
 }
 
+/* ======================================
+   ARTICOLI RECENTI
+====================================== */
+.recent-articles {
+  padding: var(--spacing-xxl) var(--spacing-lg);
+  text-align: center;
+}
+
+.article p {
+  padding: 0 var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+.read-more {
+  display: inline-block;
+  margin: var(--spacing-md);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ======================================
+   BMI CALCOLATORE
+====================================== */
 .bmi-calcolatore {
   background-color: #f1f8f5;
-  padding: 20px;
-  border-radius: 15px;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
   max-width: 700px;
   margin: 55px auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .bmi-calcolatore h2 {
   text-align: center;
-  color: #00796b;
 }
 
 .bmi-calcolatore label,
 .bmi-calcolatore input {
   display: block;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.bmi-calcolatore input {
+  padding: var(--spacing-sm);
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
 }
 
 .bmi-calcolatore button {
-  background-color: #00796b;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
   width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.bmi-calcolatore button:hover {
+  background-color: var(--color-primary-dark);
 }
 
 .risultato {
-  margin-top: 15px;
+  margin-top: var(--spacing-md);
   text-align: center;
   font-weight: bold;
 }
-.intro-text table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-.intro-text th, .intro-text td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-}
+
+/* ======================================
+   TEST DI BENESSERE
+====================================== */
 form#test-benessere {
   max-width: 700px;
-  margin: 40px auto;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  font-family: "Segoe UI", sans-serif;
+  margin: var(--spacing-xxl) auto;
+  background-color: var(--color-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
 }
 
 form#test-benessere label {
   display: block;
-  margin: 15px 0 5px;
+  margin: var(--spacing-md) 0 var(--spacing-xs);
   font-weight: bold;
-  color: #00695c;
+  color: var(--color-primary-dark);
 }
 
 form#test-benessere select {
   width: 100%;
-  padding: 8px;
-  border-radius: 10px;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
   border: 1px solid #ccc;
   font-size: 1em;
 }
 
 form#test-benessere button {
-  margin-top: 20px;
-  background-color: #00796b;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
+  margin-top: var(--spacing-lg);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-sm);
   font-size: 1.1em;
-  cursor: pointer;
   transition: background-color 0.3s;
 }
 
 form#test-benessere button:hover {
-  background-color: #004d40;
+  background-color: var(--color-primary-dark);
 }
 
 #risultato-benessere {
   background-color: #f0fdfa;
-  margin: 20px auto;
+  margin: var(--spacing-lg) auto;
   max-width: 700px;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   text-align: center;
-  color: #00796b;
+  color: var(--color-primary);
   font-weight: bold;
 }
 
+/* ======================================
+   CONTATTI
+====================================== */
 .contatti {
-  background-color: #e0f2f1;
-  padding: 50px 20px;
+  background-color: var(--color-bg-accent);
+  padding: var(--spacing-xxl) var(--spacing-lg);
   text-align: center;
 }
 
@@ -306,84 +402,84 @@ form#test-benessere button:hover {
 
 .form-contatti label {
   display: block;
-  margin-top: 15px;
-  color: #004d40;
+  margin-top: var(--spacing-md);
+  color: var(--color-primary-dark);
   font-weight: bold;
 }
 
 .form-contatti input,
 .form-contatti textarea {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 8px;
+  padding: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+  border-radius: var(--radius-sm);
   border: 1px solid #ccc;
   font-size: 1em;
 }
 
 .form-contatti button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #00796b;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.3s ease;
 }
 
 .form-contatti button:hover {
-  background-color: #004d40;
+  background-color: var(--color-primary-dark);
 }
 
 .conferma {
-  margin-top: 20px;
-  color: #00796b;
+  margin-top: var(--spacing-lg);
+  color: var(--color-primary);
   font-weight: bold;
   font-size: 1.1em;
-  padding: 15px;
-  border-radius: 8px;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
   text-align: center;
 }
 
-/* Stili per la sezione esercizi */
+/* ======================================
+   SEZIONE ESERCIZI
+====================================== */
 .exercise-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: var(--spacing-lg);
 }
 
 .filter-controls {
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-lg);
   text-align: center;
 }
 
 .filter-controls label {
-  margin-right: 10px;
+  margin-right: var(--spacing-sm);
   font-weight: bold;
-  color: #00796b;
 }
 
 .filter-controls select {
-  padding: 8px 15px;
-  border-radius: 8px;
-  border: 1px solid #b2dfdb;
-  background-color: white;
-  color: #00796b;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-primary-light);
+  background-color: var(--color-white);
+  color: var(--color-primary);
   font-size: 1em;
 }
 
 .exercise-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  gap: var(--spacing-lg);
 }
 
 .exercise-card {
   border: 1px solid #e0e0e0;
-  border-radius: 15px;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease;
 }
 
@@ -392,33 +488,163 @@ form#test-benessere button:hover {
 }
 
 .exercise-card h3 {
-  color: #00796b;
-  margin-bottom: 15px;
+  margin-bottom: var(--spacing-md);
   text-align: center;
 }
 
 .exercise-card img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin: 15px 0;
+  border-radius: var(--radius-sm);
+  margin: var(--spacing-md) 0;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .exercise-card p {
-  margin: 8px 0;
-  color: #555;
+  margin: var(--spacing-sm) 0;
+  color: var(--color-text-secondary);
 }
 
 .instructions {
-  margin-top: 15px;
+  margin-top: var(--spacing-md);
   border-top: 1px solid #e0e0e0;
-  padding-top: 15px;
+  padding-top: var(--spacing-md);
 }
 
 .instructions h4 {
-  color: #00796b;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ======================================
+   FORM ISCRIZIONE
+====================================== */
+.form-container {
+  background-color: var(--form-bg-color);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.form-container h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0,128,128,0.2);
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #006666;
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+
+/* ======================================
+   FOOTER
+====================================== */
+footer {
+  background-color: var(--color-primary-light);
+  text-align: center;
+  padding: var(--spacing-md);
+  color: var(--color-primary-dark);
+  font-size: 0.9em;
+}
+
+/* ======================================
+   MEDIA QUERIES
+====================================== */
+@media (max-width: 768px) {
+  .features,
+  .consigli-container,
+  .exercise-grid {
+    gap: var(--spacing-md);
+  }
+  
+  .card,
+  .consiglio {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  form#test-benessere,
+  .bmi-calcolatore,
+  .iscrizione-form form {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --spacing-lg: 15px;
+    --spacing-xl: 20px;
+    --spacing-xxl: 30px;
+  }
+  
+  header h1 {
+    font-size: 2em;
+  }
+  
+  .intro, 
+  .consigli, 
+  .contatti {
+    padding: var(--spacing-xl) var(--spacing-sm);
+  }
+  
+  .exercise-grid {
+    grid-template-columns: 1fr;
+  }
 }

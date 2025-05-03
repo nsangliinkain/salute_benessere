@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <script src="/js/app.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header id="header"></header>
+    <div class="container">
+        <div class="form-container">
+          <form action="/signup" class="iscrizione-form" method="POST">
+            <!-- Dati di accesso -->
+            <div class="form-group">
+              <label for="username">Nome utente:</label>
+              <input type="text" id="username" name="username" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required>
+            </div>
+    
+            <!-- Dati personali -->
+            <div class="form-group">
+              <label for="eta">Età:</label>
+              <input type="number" id="eta" name="eta" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="genere">Genere:</label>
+              <select id="genere" name="genere" required>
+                <option value="" selected disabled>Seleziona</option>
+                <option value="f">Femmina</option>
+                <option value="m">Maschio</option>
+                <option value="altro">Altro</option>
+              </select>
+            </div>
+    
+            <div class="form-group">
+              <label for="peso">Peso (kg):</label>
+              <input type="number" id="peso" name="peso" step="0.1" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="altezza">Altezza (cm):</label>
+              <input type="number" id="altezza" name="altezza" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="obiettivo">Obiettivo di benessere:</label>
+              <input type="text" id="obiettivo" name="obiettivo" placeholder="Es. migliorare il sonno" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="attivita">Livello attività fisica:</label>
+              <select id="attivita" name="attivita" required>
+                <option value="" selected disabled>Seleziona</option>
+                <option value="basso">Basso</option>
+                <option value="medio">Medio</option>
+                <option value="alto">Alto</option>
+              </select>
+            </div>
+    
+            <div class="form-group">
+              <label for="sonno">Ore di sonno medie:</label>
+              <input type="number" id="sonno" name="sonno" step="0.1" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="stress">Quanto sei stressato (1-5)?</label>
+              <input type="number" id="stress" name="stress" min="1" max="5" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="allenamento">Quante volte ti alleni a settimana?</label>
+              <input type="number" id="allenamento" name="allenamento" required>
+            </div>
+    
+            <button type="submit" class="btn-primary">Registrati</button>
+          </form>
+        </div>
+      </div>    
+    <footer id="footer"></footer>
+</body>
+</html>
