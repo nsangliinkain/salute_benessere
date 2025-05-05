@@ -63,38 +63,153 @@ router.post('/signup', (req, res) => {
     return res.send("Email o username già registrati.");
   }
 
+  // Inizializza lo storico con i dati di registrazione
+  const dataRegistrazione = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  nuovoUtente.storico = [{
+    data: dataRegistrazione,
+    peso: parseFloat(nuovoUtente.peso) || 0,
+    sonno: parseFloat(nuovoUtente.sonno) || 0
+  }];
+
   dati.push(nuovoUtente);
   fs.writeFileSync(datiFile, JSON.stringify(dati, null, 2));
-
-  res.send("Registrazione completata! Ora puoi fare il login.");
+  
+  req.session.email = nuovoUtente.email;
+  req.session.username = nuovoUtente.username;
+  res.redirect('/dashboard');
 });
 
 router.post("/login", (req, res) => {
   const { identificatore, password } = req.body;
+  
+  // Validate inputs
+  if (!identificatore || !password) {
+    return res.status(400).json({
+      success: false,
+      message: "Username/email e password sono richiesti"
+    });
+  }
 
-  fs.readFile(datiFile, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ errore: "Errore lettura file" });
-
+  try {
+    // Read file synchronously to avoid callback issues
+    const data = fs.readFileSync(datiFile, "utf8");
     const utenti = JSON.parse(data);
+    
     const utente = utenti.find(
       u => (u.email === identificatore || u.username === identificatore) &&
            u.password === password
     );
 
-    if (utente) {
-      res.json({
-        success: true,
-        message: "Login riuscito!",
-        nome: utente.nome,
-        username: utente.username
-      });
-    } else {
-      res.status(401).json({
+    if (!utente) {
+      return res.status(401).json({
         success: false,
         message: "Credenziali errate"
       });
     }
+
+    // Store user info in session
+    req.session.email = utente.email;
+    req.session.username = utente.username;
+    
+    // Send successful response
+    return res.status(200).json({
+      success: true,
+      message: "Login riuscito!",
+      username: utente.username
+    });
+  } catch (err) {
+    console.error("Login error:", err);
+    return res.status(500).json({
+      success: false,
+      message: "Errore durante il login"
+    });
+  }
+});
+
+router.get('/dashboard-dati', (req, res) => {
+  const email = req.session?.email;
+  if (!email) {
+    return res.status(401).json({ errore: "Utente non autenticato" });
+  }
+
+  let dati = [];
+  if (fs.existsSync(datiFile)) {
+    dati = JSON.parse(fs.readFileSync(datiFile));
+  }
+
+  const utente = dati.find(u => u.email === email);
+  if (!utente) {
+    return res.status(404).json({ errore: "Utente non trovato" });
+  }
+
+  // Restituisci sia i dati dell'utente che lo storico
+  res.json({
+    utente: {
+      username: utente.username,
+      email: utente.email,
+      eta: utente.eta,
+      genere: utente.genere,
+      peso: utente.peso,
+      altezza: utente.altezza,
+      obiettivo: utente.obiettivo,
+      attivita: utente.attivita,
+      sonno: utente.sonno,
+      stress: utente.stress,
+      allenamento: utente.allenamento
+    },
+    storico: utente.storico || []
   });
+});
+
+// Endpoint per aggiungere valori con data personalizzata
+router.post('/aggiungi-valori', (req, res) => {
+  const email = req.session?.email;
+  if (!email) {
+    return res.status(401).json({ errore: "Utente non autenticato" });
+  }
+
+  const { peso, sonno, data } = req.body;
+  if (!peso || !sonno) {
+    return res.status(400).json({ errore: "Peso e sonno sono obbligatori" });
+  }
+
+  // Usa la data fornita o la data corrente se non specificata
+  const dataValori = data || new Date().toISOString().split('T')[0];
+
+  let dati = [];
+  if (fs.existsSync(datiFile)) {
+    dati = JSON.parse(fs.readFileSync(datiFile));
+  }
+
+  // Trova l'utente e aggiungi i nuovi valori
+  const utenteIndex = dati.findIndex(u => u.email === email);
+  if (utenteIndex === -1) {
+    return res.status(404).json({ errore: "Utente non trovato" });
+  }
+
+  // Inizializza l'array storico se non esiste
+  if (!dati[utenteIndex].storico) {
+    dati[utenteIndex].storico = [];
+  }
+
+  // Aggiungi i nuovi dati
+  dati[utenteIndex].storico.push({
+    data: dataValori,
+    peso: parseFloat(peso),
+    sonno: parseFloat(sonno)
+  });
+
+  // Ordina lo storico per data
+  dati[utenteIndex].storico.sort((a, b) => new Date(a.data) - new Date(b.data));
+
+  // Salva i dati aggiornati
+  try {
+    fs.writeFileSync(datiFile, JSON.stringify(dati, null, 2));
+    res.json({ successo: true, messaggio: "Dati aggiunti con successo" });
+  } catch (err) {
+    console.error("Errore nel salvataggio dei dati:", err);
+    res.status(500).json({ errore: "Errore nel salvataggio dei dati" });
+  }
 });
 
 module.exports = router;

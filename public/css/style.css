@@ -1,49 +1,4 @@
 /* ======================================
-   VARIABILI CSS
-====================================== */
-:root {
-  /* Colori */
-  --color-primary: #00796b;
-  --color-primary-dark: #004d40;
-  --color-primary-light: #b2dfdb;
-  --color-bg-light: #f4f9f4;
-  --color-bg-accent: #e0f2f1;
-  --color-text: #333;
-  --color-text-secondary: #555;
-  --color-white: #ffffff;
-  
-  /* Font e tipografia */
-  --font-family: 'Segoe UI', sans-serif;
-  --font-size-base: 16px;
-  --line-height: 1.6;
-  
-  /* Spaziature */
-  --spacing-xs: 5px;
-  --spacing-sm: 10px;
-  --spacing-md: 15px;
-  --spacing-lg: 20px;
-  --spacing-xl: 30px;
-  --spacing-xxl: 40px;
-  
-  /* Border radius */
-  --radius-sm: 8px;
-  --radius-md: 15px;
-  --radius-lg: 25px;
-  
-  /* Box shadow */
-  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.1);
-
-  /*signup form*/
-  --form-bg-color: #ffffff;
-  --header-bg-color: #b2e0df;
-  --primary-color: #008080;
-  --text-color: #333333;
-  --border-color: #dddddd;
-  --hover-color: #f0f8ff;
-}
-
-/* ======================================
    RESET E IMPOSTAZIONI DI BASE
 ====================================== */
 * {
@@ -53,28 +8,28 @@
 }
 
 body {
-  font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  background: var(--color-bg-light);
-  color: var(--color-text);
-  line-height: var(--line-height);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  background: #f4f9f4;
+  color: #333;
+  line-height: 1.6;
   margin: 0;
 }
 
 h1, h2, h3, h4 {
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 15px 0;
   line-height: 1.2;
-  color: var(--color-primary);
+  color: #00796b;
 }
 
 p {
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 15px 0;
 }
 
 button {
   cursor: pointer;
   border: none;
-  font-family: var(--font-family);
+  font-family: 'Segoe UI', sans-serif;
 }
 
 /* ======================================
@@ -82,14 +37,14 @@ button {
 ====================================== */
 header {
   text-align: center;
-  padding: var(--spacing-md);
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-dark);
+  padding: 15px;
+  background-color: #b2dfdb;
+  color: #004d40;
 }
 
 header h1 {
   font-size: 2.5em;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 10px;
 }
 
 header p {
@@ -101,13 +56,13 @@ header p {
 ====================================== */
 .intro {
   text-align: center;
-  padding: var(--spacing-xl);
+  padding: 30px;
 }
 
 .intro blockquote {
   font-style: italic;
-  color: var(--color-text-secondary);
-  margin: var(--spacing-xl) auto;
+  color: #555;
+  margin: 30px auto;
   max-width: 600px;
 }
 
@@ -117,24 +72,24 @@ header p {
 }
 
 .intro-text h2 {
-  margin-bottom: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .intro-text p {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 15px;
 }
 
 .intro-text table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: var(--spacing-lg);
+  margin-top: 20px;
 }
 
 .intro-text th, 
 .intro-text td {
-  border: 1px solid var(--color-text);
-  padding: var(--spacing-sm);
+  border: 1px solid #333;
+  padding: 10px;
   text-align: center;
 }
 
@@ -142,10 +97,10 @@ header p {
    PULSANTI
 ====================================== */
 .btn {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--radius-lg);
+  background-color: #00796b;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 25px;
   font-size: 1em;
   transition: transform 0.2s ease, background-color 0.3s ease;
   display: inline-block;
@@ -153,21 +108,21 @@ header p {
 }
 
 .btn:hover {
-  background-color: var(--color-primary-dark);
+  background-color: #004d40;
   transform: scale(1.03);
 }
 
 .intro button {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--radius-lg);
+  background-color: #00796b;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 25px;
   font-size: 1em;
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .intro button:hover {
-  background-color: var(--color-primary-dark);
+  background-color: #004d40;
   transform: scale(1.03);
 }
 
@@ -178,16 +133,16 @@ header p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-xxl) var(--spacing-lg);
+  gap: 20px;
+  padding: 40px 20px;
 }
 
 .card {
-  background-color: var(--color-white);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
   width: 280px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
   text-align: center;
 }
@@ -197,11 +152,11 @@ header p {
 }
 
 .card h2 {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 10px;
 }
 
 .card p {
-  color: var(--color-text-secondary);
+  color: #555;
 }
 
 /* ======================================
@@ -209,8 +164,8 @@ header p {
 ====================================== */
 .consigli, 
 .consigli-intro {
-  padding: var(--spacing-xxl) var(--spacing-lg);
-  background-color: var(--color-bg-accent);
+  padding: 40px 20px;
+  background-color: #e0f2f1;
   text-align: center;
 }
 
@@ -219,8 +174,8 @@ header p {
 }
 
 .descrizione {
-  margin-bottom: var(--spacing-xl);
-  color: var(--color-text-secondary);
+  margin-bottom: 30px;
+  color: #555;
   font-size: 1.1em;
 }
 
@@ -228,15 +183,15 @@ header p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--spacing-lg);
+  gap: 20px;
 }
 
 .consiglio {
-  background-color: var(--color-white);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
   width: 260px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
   transition: transform 0.2s ease;
 }
@@ -246,12 +201,12 @@ header p {
 }
 
 .consiglio h3 {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 10px;
   font-size: 1.2em;
 }
 
 .consiglio p {
-  color: var(--color-text-secondary);
+  color: #555;
   font-size: 0.95em;
 }
 
@@ -267,19 +222,19 @@ header p {
    ARTICOLI RECENTI
 ====================================== */
 .recent-articles {
-  padding: var(--spacing-xxl) var(--spacing-lg);
+  padding: 40px 20px;
   text-align: center;
 }
 
 .article p {
-  padding: 0 var(--spacing-md);
-  color: var(--color-text-secondary);
+  padding: 0 15px;
+  color: #555;
 }
 
 .read-more {
   display: inline-block;
-  margin: var(--spacing-md);
-  color: var(--color-primary);
+  margin: 15px;
+  color: #00796b;
   text-decoration: none;
   font-weight: bold;
 }
@@ -289,11 +244,11 @@ header p {
 ====================================== */
 .bmi-calcolatore {
   background-color: #f1f8f5;
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-md);
+  padding: 20px;
+  border-radius: 15px;
   max-width: 700px;
   margin: 55px auto;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .bmi-calcolatore h2 {
@@ -304,30 +259,30 @@ header p {
 .bmi-calcolatore input {
   display: block;
   width: 100%;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 10px;
 }
 
 .bmi-calcolatore input {
-  padding: var(--spacing-sm);
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: var(--radius-sm);
+  border-radius: 8px;
 }
 
 .bmi-calcolatore button {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: var(--spacing-sm);
-  border-radius: var(--radius-sm);
+  background-color: #00796b;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
   width: 100%;
   transition: background-color 0.3s ease;
 }
 
 .bmi-calcolatore button:hover {
-  background-color: var(--color-primary-dark);
+  background-color: #004d40;
 }
 
 .risultato {
-  margin-top: var(--spacing-md);
+  margin-top: 15px;
   text-align: center;
   font-weight: bold;
 }
@@ -337,51 +292,51 @@ header p {
 ====================================== */
 form#test-benessere {
   max-width: 700px;
-  margin: var(--spacing-xxl) auto;
-  background-color: var(--color-white);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 form#test-benessere label {
   display: block;
-  margin: var(--spacing-md) 0 var(--spacing-xs);
+  margin: 15px 0 5px;
   font-weight: bold;
-  color: var(--color-primary-dark);
+  color: #004d40;
 }
 
 form#test-benessere select {
   width: 100%;
-  padding: var(--spacing-sm);
-  border-radius: var(--radius-sm);
+  padding: 10px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1em;
 }
 
 form#test-benessere button {
-  margin-top: var(--spacing-lg);
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--radius-sm);
+  margin-top: 20px;
+  background-color: #00796b;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
   font-size: 1.1em;
   transition: background-color 0.3s;
 }
 
 form#test-benessere button:hover {
-  background-color: var(--color-primary-dark);
+  background-color: #004d40;
 }
 
 #risultato-benessere {
   background-color: #f0fdfa;
-  margin: var(--spacing-lg) auto;
+  margin: 20px auto;
   max-width: 700px;
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  color: var(--color-primary);
+  color: #00796b;
   font-weight: bold;
 }
 
@@ -389,8 +344,8 @@ form#test-benessere button:hover {
    CONTATTI
 ====================================== */
 .contatti {
-  background-color: var(--color-bg-accent);
-  padding: var(--spacing-xxl) var(--spacing-lg);
+  background-color: #e0f2f1;
+  padding: 40px 20px;
   text-align: center;
 }
 
@@ -402,41 +357,41 @@ form#test-benessere button:hover {
 
 .form-contatti label {
   display: block;
-  margin-top: var(--spacing-md);
-  color: var(--color-primary-dark);
+  margin-top: 15px;
+  color: #004d40;
   font-weight: bold;
 }
 
 .form-contatti input,
 .form-contatti textarea {
   width: 100%;
-  padding: var(--spacing-sm);
-  margin-top: var(--spacing-xs);
-  border-radius: var(--radius-sm);
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1em;
 }
 
 .form-contatti button {
-  margin-top: var(--spacing-lg);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border-radius: var(--radius-sm);
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #00796b;
+  color: #ffffff;
+  border-radius: 8px;
   transition: background-color 0.3s ease;
 }
 
 .form-contatti button:hover {
-  background-color: var(--color-primary-dark);
+  background-color: #004d40;
 }
 
 .conferma {
-  margin-top: var(--spacing-lg);
-  color: var(--color-primary);
+  margin-top: 20px;
+  color: #00796b;
   font-weight: bold;
   font-size: 1.1em;
-  padding: var(--spacing-md);
-  border-radius: var(--radius-sm);
+  padding: 15px;
+  border-radius: 8px;
   text-align: center;
 }
 
@@ -446,40 +401,40 @@ form#test-benessere button:hover {
 .exercise-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--spacing-lg);
+  padding: 20px;
 }
 
 .filter-controls {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 20px;
   text-align: center;
 }
 
 .filter-controls label {
-  margin-right: var(--spacing-sm);
+  margin-right: 10px;
   font-weight: bold;
 }
 
 .filter-controls select {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-primary-light);
-  background-color: var(--color-white);
-  color: var(--color-primary);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #b2dfdb;
+  background-color: #ffffff;
+  color: #00796b;
   font-size: 1em;
 }
 
 .exercise-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
+  gap: 20px;
 }
 
 .exercise-card {
   border: 1px solid #e0e0e0;
-  border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
-  background-color: var(--color-white);
-  box-shadow: var(--shadow-sm);
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
 
@@ -488,40 +443,40 @@ form#test-benessere button:hover {
 }
 
 .exercise-card h3 {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 15px;
   text-align: center;
 }
 
 .exercise-card img {
   max-width: 100%;
   height: auto;
-  border-radius: var(--radius-sm);
-  margin: var(--spacing-md) 0;
+  border-radius: 8px;
+  margin: 15px 0;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .exercise-card p {
-  margin: var(--spacing-sm) 0;
-  color: var(--color-text-secondary);
+  margin: 10px 0;
+  color: #555;
 }
 
 .instructions {
-  margin-top: var(--spacing-md);
+  margin-top: 15px;
   border-top: 1px solid #e0e0e0;
-  padding-top: var(--spacing-md);
+  padding-top: 15px;
 }
 
 .instructions h4 {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 10px;
 }
 
 /* ======================================
    FORM ISCRIZIONE
 ====================================== */
 .form-container {
-  background-color: var(--form-bg-color);
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   padding: 30px;
@@ -529,7 +484,7 @@ form#test-benessere button:hover {
 }
 
 .form-container h1 {
-  color: var(--primary-color);
+  color: #008080;
   text-align: center;
   margin-bottom: 30px;
   font-size: 28px;
@@ -542,14 +497,14 @@ form#test-benessere button:hover {
 label {
   display: block;
   margin-bottom: 8px;
-  color: var(--primary-color);
+  color: #008080;
   font-weight: 500;
 }
 
 input, select {
   width: 100%;
   padding: 12px;
-  border: 1px solid var(--border-color);
+  border: 1px solid #dddddd;
   border-radius: 8px;
   font-size: 16px;
   transition: all 0.3s ease;
@@ -557,7 +512,7 @@ input, select {
 
 input:focus, select:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: #008080;
   box-shadow: 0 0 0 2px rgba(0,128,128,0.2);
 }
 
@@ -571,7 +526,7 @@ select {
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
+  background-color: #008080;
   color: white;
   border: none;
   border-radius: 8px;
@@ -645,16 +600,14 @@ select {
   background-color: #0056b3;
 }
 
-
-
 /* ======================================
    FOOTER
 ====================================== */
 footer {
-  background-color: var(--color-primary-light);
+  background-color: #b2dfdb;
   text-align: center;
-  padding: var(--spacing-md);
-  color: var(--color-primary-dark);
+  padding: 15px;
+  color: #004d40;
   font-size: 0.9em;
 }
 
@@ -665,7 +618,7 @@ footer {
   .features,
   .consigli-container,
   .exercise-grid {
-    gap: var(--spacing-md);
+    gap: 15px;
   }
   
   .card,
@@ -677,17 +630,11 @@ footer {
   form#test-benessere,
   .bmi-calcolatore,
   .iscrizione-form form {
-    padding: var(--spacing-lg);
+    padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  :root {
-    --spacing-lg: 15px;
-    --spacing-xl: 20px;
-    --spacing-xxl: 30px;
-  }
-  
   header h1 {
     font-size: 2em;
   }
@@ -695,7 +642,7 @@ footer {
   .intro, 
   .consigli, 
   .contatti {
-    padding: var(--spacing-xl) var(--spacing-sm);
+    padding: 20px 10px;
   }
   
   .exercise-grid {

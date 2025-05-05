@@ -18,7 +18,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
               
-                <button type="submit">Accedi</button>
+                <button type="submit" class="btn-primary">Accedi</button>
             </form>
             
             <div id="login-feedback"></div>
@@ -26,26 +26,48 @@
     </div>
       
     <script>
+    // Fixed login form handler
     document.getElementById("login-form").addEventListener("submit", async function (e) {
         e.preventDefault();
-    
+
         const identificatore = document.getElementById("identificatore").value.trim();
         const password = document.getElementById("password").value.trim();
         const feedback = document.getElementById("login-feedback");
-    
-        const res = await fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identificatore, password })
-        });
-    
-        const data = await res.json();
-        if (res.ok) {
-        feedback.innerHTML = `<p class="success">Benvenuto ${data.nome}!</p>`;
-        // Puoi anche salvare i dati utente in localStorage o reindirizzare
-        setTimeout(() => window.location.href = "/dashboard.html", 1500);
-        } else {
-        feedback.innerHTML = `<p class="error">${data.message}</p>`;
+        
+        // Show loading state
+        feedback.innerHTML = "<p>Verifico credenziali...</p>";
+        
+        try {
+            const res = await fetch("/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ identificatore, password })
+            });
+            
+            if (!res.ok) {
+                // Handle HTTP errors
+                if (res.status === 404) {
+                    feedback.innerHTML = '<p class="error">Errore: endpoint non trovato</p>';
+                    return;
+                }
+                
+                const errorData = await res.json().catch(() => ({}));
+                feedback.innerHTML = `<p class="error">${errorData.message || "Errore durante il login"}</p>`;
+                return;
+            }
+            
+            const data = await res.json();
+            
+            if (data.success) {
+                feedback.innerHTML = `<p class="success">Login effettuato con successo!</p>`;
+                // Redirect to dashboard after short delay
+                setTimeout(() => window.location.href = "/dashboard.html", 1000);
+            } else {
+                feedback.innerHTML = `<p class="error">${data.message || "Errore sconosciuto"}</p>`;
+            }
+        } catch (error) {
+            console.error("Errore durante il login:", error);
+            feedback.innerHTML = '<p class="error">Impossibile connettersi al server. Verifica la tua connessione.</p>';
         }
     });
     </script>   

@@ -11,6 +11,54 @@
     "attivita": "basso",
     "sonno": "5.5",
     "stress": "3",
-    "allenamento": "1"
+    "allenamento": "1",
+    "storico": [
+      {
+        "data": "2025-03-20",
+        "peso": 71,
+        "sonno": 1.9
+      },
+      {
+        "data": "2025-04-28",
+        "peso": 75,
+        "sonno": 4
+      },
+      {
+        "data": "2025-05-01",
+        "peso": 80,
+        "sonno": 10
+      },
+      {
+        "data": "2025-05-02",
+        "peso": 77,
+        "sonno": 12
+      },
+      {
+        "data": "2025-05-05",
+        "peso": 74,
+        "sonno": 7
+      }
+    ]
+  },
+  {
+    "username": "sanlu",
+    "email": "sanlu@yahoo.fr",
+    "password": "sanlu",
+    "eta": "18",
+    "genere": "f",
+    "peso": "70",
+    "altezza": "180",
+    "obiettivo": "Migliorare Sonno",
+    "attivita": "medio",
+    "sonno": "7",
+    "stress": "2",
+    "allenamento": "2",
+    "storico": [
+      {
+        "data": "2025-05-05",
+        "peso": 70,
+        "sonno": 7
+      }
+    ]
   }
 ]
