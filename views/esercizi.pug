@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Esercizi
+    script(src="js/app.js")
+    link(rel="stylesheet", href="css/style.css")
+  body
+    include header.pug
+    
+    .intro-text
+      h2 L'importanza dell'attività fisica
+      p L'esercizio fisico regolare è un pilastro fondamentale per il nostro benessere complessivo. Non solo aiuta a mantenere un peso corporeo sano, ma contribuisce significativamente alla salute del cuore, rafforza muscoli e ossa, e migliora la flessibilità e l'equilibrio.
+      p Lo sport e l'attività fisica hanno un impatto positivo anche sulla salute mentale: riducono lo stress, l'ansia e i sintomi depressivi, migliorano la qualità del sonno e aumentano i livelli di energia durante il giorno.
+      p La Organizzazione Mondiale della Sanità raccomanda almeno 150 minuti di attività aerobica moderata o 75 minuti di attività intensa ogni settimana, insieme ad esercizi di forza almeno due volte a settimana.
+      p Esplora la nostra collezione di esercizi qui sotto e trova quelli che si adattano meglio alle tue esigenze e preferenze. Ricorda sempre di iniziare gradualmente e, se possibile, consulta un professionista prima di intraprendere un nuovo programma di allenamento.
+    
+    .exercise-section
+      h2 Esercizi Personalizzati
+      .filter-controls
+        label(for="body-part-select") Filtra per parte del corpo:
+        select#body-part-select
+          option(value="") Tutti gli esercizi
+          option(value="back") Schiena
+          option(value="cardio") Cardio
+          option(value="chest") Petto
+          option(value="lower arms") Avambracci
+          option(value="lower legs") Polpacci
+          option(value="shoulders") Spalle
+          option(value="upper arms") Braccia
+          option(value="upper legs") Cosce
+          option(value="waist") Addominali
+      
+      #exercise-container.exercise-grid
+        //- Gli esercizi verranno caricati qui
+        p Caricamento esercizi...
+    
+    include footer.pug

@@ -1,0 +1,99 @@
+doctype html
+html(lang="it")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Calcola il tuo BMI - Benessere & Salute
+        script(src="/js/bmi.js", defer)
+        link(rel="stylesheet", href="/css/bmi.css")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        include header.pug
+        
+        main.container
+            .intro-text
+                h2 Calcolo del BMI (Indice di Massa Corporea)
+                p Il Body Mass Index (BMI), noto in italiano come Indice di Massa Corporea (IMC), è il parametro più utilizzato per valutare il peso corporeo in relazione alla salute.
+                p Il BMI è un calcolo matematico che mette in relazione il peso con l'altezza di una persona, fornendo un valore numerico che aiuta a determinare se il peso rientra in un intervallo considerato salutare.
+            
+            .bmi-info
+                h3 Come si interpreta il BMI?
+                p Il risultato del calcolo classifica la persona in una delle seguenti categorie:
+                
+                table.bmi-tabella
+                    thead
+                        tr
+                            th Valore BMI
+                            th Categoria
+                            th Rischio per la salute
+                    tbody
+                        tr
+                            td Minore di 16.5
+                            td Grave Sottopeso
+                            td Elevato
+                        tr
+                            td 16.5 - 18.49
+                            td Sottopeso
+                            td Moderato
+                        tr
+                            td 18.5 - 24.99
+                            td Normopeso
+                            td Basso
+                        tr
+                            td 25 - 29.99
+                            td Sovrappeso
+                            td Moderato
+                        tr
+                            td 30 - 34.99
+                            td Obesità di I grado
+                            td Alto
+                        tr
+                            td 35 - 39.99
+                            td Obesità di II grado
+                            td Molto alto
+                        tr
+                            td Maggiore di 40
+                            td Obesità di III grado
+                            td Estremamente alto
+                
+                p 
+                    strong Nota: 
+                    | Il BMI è un indicatore generale e non tiene conto di fattori come la composizione corporea, la distribuzione del grasso, l'età, il sesso e il livello di attività fisica. Consulta sempre un professionista della salute per una valutazione completa.
+            
+            section.bmi-calcolatore
+                h2 Calcola il tuo BMI
+                form#bmi-form
+                    .bmi-form-group
+                        label(for="altezza") Altezza (cm):
+                        input#altezza(type="number", min="100", max="250", required, placeholder="Es. 170")
+                    
+                    .bmi-form-group
+                        label(for="peso") Peso (kg):
+                        input#peso(type="number", min="30", max="300", step="0.1", required, placeholder="Es. 70.5")
+                    
+                    button(type="submit") Calcola il mio BMI
+                
+                #risultato-bmi.risultato
+                
+                .bmi-info
+                    h3 Formula del BMI
+                    p Il BMI si calcola dividendo il peso in chilogrammi per il quadrato dell'altezza in metri:
+                    p 
+                        strong BMI = peso (kg) / [altezza (m)]²
+                    p Esempio: Una persona che pesa 70 kg ed è alta 175 cm (1.75 m) ha un BMI di 70 / (1.75 × 1.75) = 22.9
+            
+            .intro-text
+                h2 Limiti del BMI
+                p Sebbene il BMI sia uno strumento utile per una valutazione iniziale, presenta alcune limitazioni da considerare:
+                
+                ul
+                    li Non distingue tra massa muscolare e massa grassa
+                    li Non tiene conto della distribuzione del grasso corporeo
+                    li Può non essere accurato per atleti, anziani o donne in gravidanza
+                    li Non considera fattori genetici o di composizione corporea
+                
+                p Per una valutazione completa del tuo stato di salute, è consigliabile consultare un medico o un nutrizionista qualificato.
+                
+                a.btn(href="/contatti") Contattaci per una consulenza
+        
+        include footer.pug

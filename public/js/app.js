@@ -97,35 +97,6 @@ function caricaCitazione() {
     });
 }
 
-function espandiConsigli() {
-    const readMoreButtons = document.querySelectorAll('.consiglio button.read-more');
-    
-    if (readMoreButtons.length > 0) {
-        document.querySelectorAll('.consiglio').forEach(consiglio => {
-            const button = consiglio.querySelector('button.read-more');
-            if (button) {
-                if (consiglio.classList.contains('expanded')) {
-                    button.textContent = 'Mostra meno';
-                } else {
-                    button.textContent = 'Leggi di più';
-                }
-            }
-        });
-        
-        readMoreButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const consiglio = this.closest('.consiglio');
-                consiglio.classList.toggle('expanded');
-                
-                if (consiglio.classList.contains('expanded')) {
-                    this.textContent = 'Mostra meno';
-                } else {
-                    this.textContent = 'Leggi di più';
-                }
-            });
-        });
-    }
-}
 
 // Funzione per caricare esercizi
 async function loadExercises(bodyPart = '') {

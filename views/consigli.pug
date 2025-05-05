@@ -1,0 +1,100 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Consigli
+    script(src="/js/consigli.js")
+    link(rel="stylesheet", href="/css/style.css")
+    link(rel="stylesheet", href="/css/consigli.css")
+  body
+    include header.pug
+    
+    section.consigli-intro
+      .intro-text
+        h2 Piccoli cambiamenti, grandi risultati
+        p Migliorare il proprio benessere non richiede rivoluzioni drastiche. A volte, sono i piccoli cambiamenti quotidiani a fare la differenza maggiore nel lungo periodo. Abbiamo raccolto per te consigli pratici e facili da implementare, divisi per aree del benessere.
+        p Ricorda: non devi seguirli tutti contemporaneamente! Scegli un consiglio alla volta e integralo nella tua routine fino a quando non diventa un'abitudine.
+
+    .consigli-container
+      .consiglio
+        h3 🥦 Alimentazione
+        p Mangia frutta e verdura di stagione ogni giorno. Riduci zuccheri e cibi processati.
+        .details
+          h4 Suggerimenti pratici:
+          ul
+            li Inizia la giornata con frutta fresca nella colazione
+            li Sostituisci gli snack industriali con frutta secca o yogurt
+            li Bevi un bicchiere d'acqua prima dei pasti
+            li Prova a ridurre gradualmente lo zucchero nel caffè
+            li Prepara in anticipo i pasti della settimana
+          .benefit
+            strong Beneficio:
+            |  Più energia, miglior concentrazione e sistema immunitario più forte.
+        button.read-more Leggi di più
+      
+      .consiglio
+        h3 💤 Sonno
+        p Vai a dormire e svegliati agli stessi orari. Riduci la luce blu la sera.
+        .details
+          h4 Suggerimenti pratici:
+          ul
+            li Crea una routine serale rilassante 30 minuti prima di andare a letto
+            li Attiva la modalità notte sui dispositivi elettronici dopo le 20:00
+            li Evita caffeina dopo le 14:00
+            li Mantieni la camera da letto fresca e buia
+            li Prova la meditazione o la respirazione profonda prima di dormire
+          .benefit
+            strong Beneficio:
+            |  Migliore recupero fisico e mentale, maggiore attenzione durante il giorno e miglior umore.
+        button.read-more Leggi di più
+      
+      .consiglio
+        h3 🚶 Movimento
+        p Fai almeno 30 minuti di camminata al giorno. Muoviti anche se stai studiando tanto.
+        .details
+          h4 Suggerimenti pratici:
+          ul
+            li Alzati e cammina per 5 minuti ogni ora quando studi o lavori
+            li Usa le scale invece dell'ascensore
+            li Scendi una fermata prima del bus o parcheggia più lontano
+            li Fai stretching al mattino appena sveglio
+            li Prova l'app "7 Minute Workout" per esercizi rapidi ed efficaci
+          .benefit
+            strong Beneficio:
+            |  Migliore circolazione, riduzione dello stress, prevenzione dei dolori muscolari.
+        button.read-more Leggi di più
+      
+      .consiglio
+        h3 🧘‍♀️ Relax mentale
+        p Prenditi delle pause. Fai esercizi di respirazione o meditazione anche per 5 minuti.
+        .details
+          h4 Suggerimenti pratici:
+          ul
+            li Prova la tecnica di respirazione 4-7-8: inspira per 4 secondi, trattieni per 7, espira per 8
+            li Utilizza app come Headspace o Calm per meditazioni guidate
+            li Fai una pausa di 10 minuti all'aria aperta tra le sessioni di studio
+            li Limita l'uso dei social media durante lo studio
+            li Scrivi i tuoi pensieri su un diario a fine giornata
+          .benefit
+            strong Beneficio:
+            |  Riduzione dell'ansia, maggiore concentrazione e migliore gestione dello stress.
+        button.read-more Leggi di più
+      
+      .consiglio
+        h3 💧 Idratazione
+        p Bevi almeno 1,5L di acqua al giorno. Porta sempre con te una bottiglia.
+        .details
+          h4 Suggerimenti pratici:
+          ul
+            li Bevi un bicchiere d'acqua appena sveglio
+            li Usa una bottiglia con indicatori di quantità per monitorare l'assunzione
+            li Imposta promemoria sul telefono ogni ora
+            li Arricchisci l'acqua con fette di frutta per un sapore più gradevole
+            li Bevi un bicchiere d'acqua prima di ogni pasto
+          .benefit
+            strong Beneficio:
+            |  Migliore digestione, maggiore energia e concentrazione, pelle più sana.
+        button.read-more Leggi di più
+    
+    include footer.pug

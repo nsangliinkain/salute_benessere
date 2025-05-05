@@ -1,0 +1,74 @@
+doctype html
+html(lang="it")
+  head
+    meta(charset="UTF-8")
+    title Sign Up
+    script(src="/js/app.js")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    include header.pug
+    
+    .container
+      .form-container
+        form.iscrizione-form(action="/signup", method="POST")
+          // Dati di accesso
+          .form-group
+            label(for="username") Nome utente:
+            input(type="text", id="username", name="username", required)
+          
+          .form-group
+            label(for="email") Email:
+            input(type="email", id="email", name="email", required)
+          
+          .form-group
+            label(for="password") Password:
+            input(type="password", id="password", name="password", required)
+          
+          // Dati personali
+          .form-group
+            label(for="eta") Età:
+            input(type="number", id="eta", name="eta", required)
+          
+          .form-group
+            label(for="genere") Genere:
+            select(id="genere", name="genere", required)
+              option(value="", selected, disabled) Seleziona
+              option(value="f") Femmina
+              option(value="m") Maschio
+              option(value="altro") Altro
+          
+          .form-group
+            label(for="peso") Peso (kg):
+            input(type="number", id="peso", name="peso", step="0.1", required)
+          
+          .form-group
+            label(for="altezza") Altezza (cm):
+            input(type="number", id="altezza", name="altezza", required)
+          
+          .form-group
+            label(for="obiettivo") Obiettivo di benessere:
+            input(type="text", id="obiettivo", name="obiettivo", placeholder="Es. migliorare il sonno", required)
+          
+          .form-group
+            label(for="attivita") Livello attività fisica:
+            select(id="attivita", name="attivita", required)
+              option(value="", selected, disabled) Seleziona
+              option(value="basso") Basso
+              option(value="medio") Medio
+              option(value="alto") Alto
+          
+          .form-group
+            label(for="sonno") Ore di sonno medie:
+            input(type="number", id="sonno", name="sonno", step="0.1", required)
+          
+          .form-group
+            label(for="stress") Quanto sei stressato (1-5)?
+            input(type="number", id="stress", name="stress", min="1", max="5", required)
+          
+          .form-group
+            label(for="allenamento") Quante volte ti alleni a settimana?
+            input(type="number", id="allenamento", name="allenamento", required)
+          
+          button.btn-primary(type="submit") Registrati
+    
+    include footer.pug

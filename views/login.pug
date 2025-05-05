@@ -1,0 +1,70 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Login
+    script(src="/js/app.js")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    include header.pug
+    
+    .container
+      .form-container
+        form#login-form
+          label(for="identificatore") Email o Username
+          input(type="text", id="identificatore", name="identificatore", required)
+          
+          label(for="password") Password
+          input(type="password", id="password", name="password", required)
+          
+          button.btn-primary(type="submit") Accedi
+          
+        #login-feedback
+    
+    script.
+      document.getElementById("login-form").addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const identificatore = document.getElementById("identificatore").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const feedback = document.getElementById("login-feedback");
+          
+          // Show loading state
+          feedback.innerHTML = "<p>Verifico credenziali...</p>";
+          
+          try {
+              const res = await fetch("/login", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ identificatore, password })
+              });
+              
+              if (!res.ok) {
+                  // Handle HTTP errors
+                  if (res.status === 404) {
+                      feedback.innerHTML = '<p class="error">Errore: endpoint non trovato</p>';
+                      return;
+                  }
+                  
+                  const errorData = await res.json().catch(() => ({}));
+                  feedback.innerHTML = `<p class="error">${errorData.message || "Errore durante il login"}</p>`;
+                  return;
+              }
+              
+              const data = await res.json();
+              
+              if (data.success) {
+                  feedback.innerHTML = `<p class="success">Login effettuato con successo!</p>`;
+                  // Redirect to dashboard after short delay
+                  setTimeout(() => window.location.href = "/dashboard", 1000);
+              } else {
+                  feedback.innerHTML = `<p class="error">${data.message || "Errore sconosciuto"}</p>`;
+              }
+          } catch (error) {
+              console.error("Errore durante il login:", error);
+              feedback.innerHTML = '<p class="error">Impossibile connettersi al server. Verifica la tua connessione.</p>';
+          }
+      });
+    
+    include footer.pug

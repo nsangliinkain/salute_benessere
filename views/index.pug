@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Home
+    script(src="/js/app.js")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    include header.pug
+    
+    section.intro
+      blockquote#citazione Caricamento citazione...
+      button(onclick="caricaCitazione()") Nuova citazione
+    
+    section.features
+      .card
+        h2 💡 Consigli
+        p Scopri come migliorare la tua routine quotidiana in modo semplice.
+        a.read-more(href="/consigli") Leggi di più
+      .card
+        h2 🧠 Test Benessere
+        p Fai il nostro test e scopri il tuo profilo benessere.
+        a.read-more(href="/test") Inizia il test
+      .card
+        h2 ⚖️ Calcola BMI
+        p Inserisci i tuoi dati e valuta il tuo indice di massa corporea.
+        a.read-more(href="/bmi") Calcola BMI
+    
+    section.recent-articles
+      h2 Articoli recenti
+      .features
+        .card
+          h2 💤 Come migliorare la qualità del sonno
+          p Scopri le tecniche più efficaci per dormire meglio e svegliarti riposato...
+          a.read-more(href="https://www.sonnocare.it/come-migliorare-il-sonno-guida-per-un-buon-riposo-notturno/") Leggi di più
+        .card
+          h2 😋 Alimentazione e studio: cosa mangiare
+          p Gli alimenti giusti possono migliorare la concentrazione e la memoria...
+          a.read-more(href="http://affidea.it/it/art/cibo-per-la-mente-quali-mangiare-per-un-avere-un-cervello-in-salute/") Leggi di più
+        .card
+          h2 🤓 5 esercizi per chi studia molto
+          p Movimenti semplici da fare anche alla scrivania per prevenire dolori...
+          a.read-more(href="https://www.posturadapaura.com/blog/rimani-attivo-al-lavoro-5-esercizi-da-fare-al-tuo-desk/") Leggi di più
+    
+    include footer.pug

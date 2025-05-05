@@ -44,7 +44,7 @@ router.post('/test-benessere', (req, res) => {
 });
 
 router.post('/conferma', (req, res) => {
-  res.sendFile(__dirname + '/../public/conferma.html');
+  res.render('conferma', { title: 'Conferma' });
 });
 
 router.post('/signup', (req, res) => {

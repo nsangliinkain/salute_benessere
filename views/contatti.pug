@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Contatti
+    script(src="/js/app.js")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    include header.pug
+    
+    section.contatti
+      form.form-contatti(action="/conferma", method="POST")
+        label(for="nome") Nome
+        input#nome(type="text", name="nome", required)
+        
+        label(for="email") Email
+        input#email(type="email", name="email", required)
+        
+        label(for="messaggio") Messaggio
+        textarea#messaggio(name="messaggio", rows="5", required)
+        
+        button(type="submit") Invia messaggio
+      
+      #conferma.conferma(style="display: none;")
+        | Grazie per averci contattato! Ti risponderemo al più presto.
+    
+    script.
+      document.getElementById('form-contatti').addEventListener('submit', function (e) {
+        e.preventDefault(); // Evita l'invio reale del form
+        this.reset(); // Pulisce i campi del form
+        document.getElementById('conferma').style.display = 'block'; // Mostra il messaggio
+      });
+    
+    include footer.pug

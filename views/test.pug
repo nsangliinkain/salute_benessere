@@ -1,0 +1,117 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Test del Benessere
+    script(src="/js/app.js")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    include header.pug
+    
+    form#test-benessere
+      h2 Test sul tuo benessere psicofisico
+      
+      label 1. Ti prendi cura concretamente della tua salute?
+      select(name="q1", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="1") Mai / Raramente
+        option(value="2") A volte
+        option(value="3") Spesso / Sempre
+      
+      label 2. Segui un programma di allenamento specifico per mantenerti in forma?
+      select(name="q2", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="1") Mai / Raramente
+        option(value="2") A volte
+        option(value="3") Spesso / Sempre
+      
+      label 3. Ti senti spesso stanco?
+      select(name="q3", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="3") Sì
+        option(value="2") A volte
+        option(value="1") Raramente / Mai
+      
+      label 4. Sei arrabbiato, triste o stufo?
+      select(name="q4", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="3") Spesso
+        option(value="2") A volte
+        option(value="1") Raramente / Mai
+      
+      label 5. Ti senti sotto stress e sopraffatto dalle cose della vita?
+      select(name="q5", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="3") Spesso
+        option(value="2") A volte
+        option(value="1") Raramente / Mai
+      
+      label 6. Mangi per nervosismo, solitudine o noia?
+      select(name="q6", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="3") Spesso
+        option(value="2") A volte
+        option(value="1") Mai / Raramente
+      
+      label 7. Ti muovi e sei attivo nella tua vita quotidiana?
+      select(name="q7", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="1") Mai / Raramente
+        option(value="2") A volte
+        option(value="3") Spesso / Sempre
+      
+      label 8. Ritieni di dormire bene e di essere riposato?
+      select(name="q8", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="1") No
+        option(value="2") A volte
+        option(value="3") Sì
+      
+      label 9. Investi denaro e tempo su te stesso, sulla tua salute e crescita personale?
+      select(name="q9", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="1") No
+        option(value="2") Qualche volta
+        option(value="3") Sì
+      
+      label 10. Ti senti in stallo nel tuo percorso di vita?
+      select(name="q10", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="3") Sì
+        option(value="2") A volte
+        option(value="1") No
+      
+      label 11. Senti che vorresti fare di più per migliorare la tua salute e la tua vita?
+      select(name="q11", required)
+        option(value="", disabled, selected, hidden) -- Seleziona una risposta --
+        option(value="3") Sì
+        option(value="2") Forse
+        option(value="1") No
+      
+      br
+      br
+      button(type="submit") Invia e visualizza il tuo profilo benessere
+    
+    #risultato-benessere(style="margin-top: 20px;")
+    
+    script.
+      document.getElementById("test-benessere").addEventListener("submit", async function (e) {
+          e.preventDefault(); //non ricarica la pagina dopo l'invio del form
+          const formData = new FormData(this); //crea un oggetto FormData con i dati del form
+          const dati = {}; //crea un oggetto vuoto per memorizzare i dati
+          formData.forEach((valore, chiave) => dati[chiave] = valore);
+          
+          const res = await fetch("http://localhost:3000/test-benessere", { //invio dei dati al server
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(dati)
+          });
+          
+          const json = await res.json(); //aspetta la risposta dal server in formato JSON
+          //mostra il risultato del test
+          document.getElementById("risultato-benessere").innerHTML =
+              `<h3>Punteggio: ${json.punteggio}/33</h3><p>${json.messaggio}</p>`;
+      });
+    
+    include footer.pug

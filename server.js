@@ -3,8 +3,13 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const path = require('path');
+const fs = require('fs');
 const PORT = 3000;
 const LOCALHOST = 'localhost';
+
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));                  
 
 // Middleware
 app.use(express.static('public'));

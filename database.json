@@ -60,5 +60,26 @@
         "sonno": 7
       }
     ]
+  },
+  {
+    "username": "kanye_west",
+    "email": "kanye@libero.it",
+    "password": "kanye",
+    "eta": "47",
+    "genere": "m",
+    "peso": "79.7",
+    "altezza": "173",
+    "obiettivo": "Dimagrimento",
+    "attivita": "basso",
+    "sonno": "3",
+    "stress": "3",
+    "allenamento": "1",
+    "storico": [
+      {
+        "data": "2025-05-05",
+        "peso": 79.7,
+        "sonno": 3
+      }
+    ]
   }
 ]

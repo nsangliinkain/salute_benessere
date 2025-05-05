@@ -1,0 +1,217 @@
+doctype html
+html(lang="it")
+  head
+    meta(charset="UTF-8")
+    title Dashboard Benessere
+    link(rel="stylesheet", href="/css/dashboard.css")
+    link(rel="stylesheet", href="/css/style.css")
+    script(src="/js/app.js")
+    script(src="https://cdn.jsdelivr.net/npm/chart.js")
+  body
+    include header.pug
+    
+    main
+      section.benvenuto
+        h2#messaggioBenvenuto Benvenuto!
+      
+      section.profilo-container
+        .dati-profilo
+          h3 Il tuo profilo
+          #datiUtente
+            //- I dati dell'utente saranno inseriti qui dal JavaScript
+          .obiettivo-box
+            strong Obiettivo:
+            span#obiettivoUtente
+        
+        .dati-profilo
+          h3 Le tue metriche
+          .metriche-container
+            .metrica-box
+              .etichetta BMI
+              .valore#bmiUtente -
+              #categoriaUtente -
+            .metrica-box
+              .etichetta Livello di Stress
+              .valore#stressUtente -
+              div (su 5)
+            .metrica-box
+              .etichetta Attività
+              .valore#attivitaUtente -
+      
+      section.grafico
+        h2 Storico Peso e Sonno
+        canvas#grafico(width="600", height="300")
+      
+      section.aggiungi-dati
+        h2 Aggiungi nuovi valori
+        form#formValori
+          label(for="data") Data:
+          input#data(type="date", name="data", required)
+          
+          label(for="peso") Peso (kg):
+          input#peso(type="number", name="peso", step="0.1", required)
+          
+          label(for="sonno") Ore di sonno:
+          input#sonno(type="number", name="sonno", step="0.1", required)
+          
+          button(type="submit") Aggiungi
+    
+    include footer.pug
+    
+    script.
+      // Imposta la data odierna come valore predefinito per il campo data
+      document.addEventListener('DOMContentLoaded', function() {
+        const oggi = new Date().toISOString().split('T')[0];
+        document.getElementById('data').value = oggi;
+      });
+      
+      // Mappa i livelli di attività
+      const mappaAttivita = {
+        'basso': 'Livello Basso',
+        'moderato': 'Livello Moderato',
+        'alto': 'Livello Alto'
+      };
+      
+      // Funzione per calcolare il BMI
+      function calcolaBMI(peso, altezza) {
+        const altezzaM = altezza / 100;
+        const bmi = peso / (altezzaM * altezzaM);
+        let categoria = '';
+        
+        if (bmi < 18.5) categoria = 'Sottopeso';
+        else if (bmi < 25) categoria = 'Normopeso';
+        else if (bmi < 30) categoria = 'Sovrappeso';
+        else categoria = 'Obesità';
+        
+        return {
+          valore: bmi.toFixed(1),
+          categoria
+        };
+      }
+      
+      async function caricaDashboard() {
+        try {
+          const res = await fetch('/dashboard-dati');
+          
+          if (!res.ok) {
+            if (res.status === 401) {
+              alert('Sessione scaduta. Effettua nuovamente il login.');
+              window.location.href = '/login.html';
+              return;
+            }
+            throw new Error('Errore nel caricamento dei dati');
+          }
+          
+          const dati = await res.json();
+          const utente = dati.utente;
+          
+          document.getElementById('messaggioBenvenuto').textContent = `Benvenuto, ${utente.username || 'Utente'}!`;
+          
+          // Popola i dati del profilo
+          const datiUtenteEl = document.getElementById('datiUtente');
+          datiUtenteEl.innerHTML = `
+            <div class="dato-utente">
+              <strong>Username:</strong> <span>${utente.username}</span>
+            </div>
+            <div class="dato-utente">
+              <strong>Email:</strong> <span>${utente.email}</span>
+            </div>
+            <div class="dato-utente">
+              <strong>Età:</strong> <span>${utente.eta} anni</span>
+            </div>
+            <div class="dato-utente">
+              <strong>Genere:</strong> <span>${utente.genere.charAt(0).toUpperCase() + utente.genere.slice(1)}</span>
+            </div>
+            <div class="dato-utente">
+              <strong>Peso:</strong> <span>${utente.peso} kg</span>
+            </div>
+            <div class="dato-utente">
+              <strong>Altezza:</strong> <span>${utente.altezza} cm</span>
+            </div>
+            <div class="dato-utente">
+              <strong>Ore di sonno:</strong> <span>${utente.sonno} ore</span>
+            </div>
+          `;
+          
+          document.getElementById('obiettivoUtente').textContent = utente.obiettivo;
+          
+          // Calcola e mostra il BMI
+          const bmi = calcolaBMI(parseFloat(utente.peso), parseFloat(utente.altezza));
+          document.getElementById('bmiUtente').textContent = bmi.valore;
+          document.getElementById('categoriaUtente').textContent = bmi.categoria;
+          
+          // Mostra livello di stress
+          document.getElementById('stressUtente').textContent = utente.stress;
+          
+          // Mostra livello di attività
+          document.getElementById('attivitaUtente').textContent = mappaAttivita[utente.attivita] || utente.attivita;
+          
+          // Visualizza grafico se ci sono dati
+          if (dati.storico && dati.storico.length > 0) {
+            generaGrafico(dati.storico);
+          } else {
+            document.querySelector('.grafico').innerHTML += '<p>Non ci sono ancora dati da visualizzare.</p>';
+          }
+        } catch (err) {
+          console.error('Errore:', err);
+          alert('Si è verificato un errore nel caricamento dei dati.');
+        }
+      }
+      
+      function generaGrafico(storico) {
+        const labels = storico.map(e => e.data);
+        const datiPeso = storico.map(e => e.peso);
+        const datiSonno = storico.map(e => e.sonno);
+        
+        const ctx = document.getElementById('grafico').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [
+              {
+                label: 'Peso (kg)',
+                data: datiPeso,
+                borderColor: 'blue',
+                fill: false
+              },
+              {
+                label: 'Ore di Sonno',
+                data: datiSonno,
+                borderColor: 'green',
+                fill: false
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { position: 'top' }
+            }
+          }
+        });
+      }
+      
+      document.getElementById('formValori').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const data = document.getElementById('data').value;
+        const peso = parseFloat(document.getElementById('peso').value);
+        const sonno = parseFloat(document.getElementById('sonno').value);
+        
+        const res = await fetch('/aggiungi-valori', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data, peso, sonno })
+        });
+        
+        const risposta = await res.json();
+        if (res.ok) {
+          alert("Dati aggiunti con successo!");
+          location.reload();
+        } else {
+          alert("Errore: " + (risposta.errore || "Si è verificato un problema"));
+        }
+      });
+      
+      window.onload = caricaDashboard;
