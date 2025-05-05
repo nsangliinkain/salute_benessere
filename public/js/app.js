@@ -56,10 +56,18 @@ function setPageTitle() {
             pageTitle.textContent = "Registrati";
             pageParagraph.textContent = "Unisciti alla nostra community e inizia il tuo viaggio verso il benessere.";
             break;
+        case "login":
+            pageTitle.textContent = "Accedi";
+            pageParagraph.textContent = "Accedi al tuo account per continuare il tuo percorso di benessere.";
+            break;
+        case "esercizi":
+            pageTitle.textContent = "Esercizi Fisici";
+            pageParagraph.textContent = "Scopri esercizi per ogni parte del corpo e migliora la tua forma fisica.";
+            break;
         case "conferma":
             break;
         default:
-            pageTitle.textContent = "Benvenuti";
+            pageTitle.textContent = "";
     }
 }
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="/js/app.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header id="header"></header>
+    <div class="container">
+        <div class="form-container">
+            <form id="login-form">
+                <label for="identificatore">Email o Username</label>
+                <input type="text" id="identificatore" name="identificatore" required>
+              
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+              
+                <button type="submit">Accedi</button>
+            </form>
+            
+            <div id="login-feedback"></div>
+        </div>
+    </div>
+      
+    <script>
+    document.getElementById("login-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+    
+        const identificatore = document.getElementById("identificatore").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const feedback = document.getElementById("login-feedback");
+    
+        const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identificatore, password })
+        });
+    
+        const data = await res.json();
+        if (res.ok) {
+        feedback.innerHTML = `<p class="success">Benvenuto ${data.nome}!</p>`;
+        // Puoi anche salvare i dati utente in localStorage o reindirizzare
+        setTimeout(() => window.location.href = "/dashboard.html", 1500);
+        } else {
+        feedback.innerHTML = `<p class="error">${data.message}</p>`;
+        }
+    });
+    </script>   
+      <footer id="footer"></footer>   
+</body>
+</html>

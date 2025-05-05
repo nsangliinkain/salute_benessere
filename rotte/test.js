@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
+const path = require('path');
+
+const datiFile = path.join(__dirname, '..', 'database.json');
 
 router.post('/calcola-bmi', (req, res) => {
   const { altezza, peso } = req.body;
@@ -41,6 +45,56 @@ router.post('/test-benessere', (req, res) => {
 
 router.post('/conferma', (req, res) => {
   res.sendFile(__dirname + '/../public/conferma.html');
+});
+
+router.post('/signup', (req, res) => {
+  const nuovoUtente = req.body;
+
+  let dati = [];
+  if (fs.existsSync(datiFile)) {
+    dati = JSON.parse(fs.readFileSync(datiFile));
+  }
+
+  // Controlla se l'email o username sono già usati
+  const esiste = dati.find(
+    u => u.email === nuovoUtente.email || u.username === nuovoUtente.username
+  );
+  if (esiste) {
+    return res.send("Email o username già registrati.");
+  }
+
+  dati.push(nuovoUtente);
+  fs.writeFileSync(datiFile, JSON.stringify(dati, null, 2));
+
+  res.send("Registrazione completata! Ora puoi fare il login.");
+});
+
+router.post("/login", (req, res) => {
+  const { identificatore, password } = req.body;
+
+  fs.readFile(datiFile, "utf8", (err, data) => {
+    if (err) return res.status(500).json({ errore: "Errore lettura file" });
+
+    const utenti = JSON.parse(data);
+    const utente = utenti.find(
+      u => (u.email === identificatore || u.username === identificatore) &&
+           u.password === password
+    );
+
+    if (utente) {
+      res.json({
+        success: true,
+        message: "Login riuscito!",
+        nome: utente.nome,
+        username: utente.username
+      });
+    } else {
+      res.status(401).json({
+        success: false,
+        message: "Credenziali errate"
+      });
+    }
+  });
 });
 
 module.exports = router;
