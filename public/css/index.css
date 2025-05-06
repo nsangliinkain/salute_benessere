@@ -1,0 +1,46 @@
+
+/* ======================================
+   SEZIONE INTRO
+====================================== */
+.intro {
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .intro blockquote {
+    font-style: italic;
+    color: #555;
+    margin: 30px auto;
+    max-width: 600px;
+  }
+  
+  .intro-text {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .intro-text h2 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .intro-text p {
+    margin-bottom: 15px;
+  }
+  
+  .intro-text table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .intro-text th, 
+  .intro-text td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .recent-articles h2 {
+    text-align: center;
+  }

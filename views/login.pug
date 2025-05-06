@@ -21,6 +21,7 @@ html(lang="en")
           button.btn-primary(type="submit") Accedi
           
         #login-feedback
+    include footer.pug
     
     script.
       document.getElementById("login-form").addEventListener("submit", async function (e) {
@@ -67,4 +68,3 @@ html(lang="en")
           }
       });
     
-    include footer.pug

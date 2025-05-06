@@ -212,4 +212,14 @@ router.post('/aggiungi-valori', (req, res) => {
   }
 });
 
+router.get("/logout", (req, res) => {
+  req.session.destroy(err => {
+      if (err) {
+          return res.redirect("/dashboard"); // errore: torna in dashboard
+      }
+      res.clearCookie("connect.sid"); // cancella il cookie di sessione
+      res.redirect("/login"); // torna alla login
+  });
+});
+
 module.exports = router;

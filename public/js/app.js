@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     includeHTML("footer", "/footer.html");
     caricaCitazione();
-    espandiConsigli();
     loadExercises();
     const parteCorpo = document.getElementById('body-part-select');
     if (parteCorpo) {

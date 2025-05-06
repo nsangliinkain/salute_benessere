@@ -132,3 +132,25 @@ body {
     color: #777;
     text-transform: uppercase;
   }
+
+  .logout-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 30px 20px 0; /* distanza da sopra e dal margine destro */
+}
+
+#logout {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#logout:hover {
+    background-color: #c0392b;
+}
+
